@@ -8,7 +8,7 @@ import os
 # python파일의 위치
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-req = requests.get('https://beomi.github.io/beomi.github.io_old/')
+req = requests.get('https://www.ebay.com/sch/182085/i.html?_from=R40&_nkw=samsung+ssd&LH_TitleDesc=0')
 html = req.text
 soup = BeautifulSoup(html, 'html.parser')
 my_titles = soup.select(

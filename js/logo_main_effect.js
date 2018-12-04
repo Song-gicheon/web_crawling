@@ -1,6 +1,6 @@
 'use strict';
 var items = [
-  'IT-SEMINAR'
+  'DUNAWA?!'
 ];
 var app = document.getElementById('app');
 var count = 0;

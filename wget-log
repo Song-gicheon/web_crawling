@@ -1,11 +1,0 @@
---2018-12-02 05:50:19--  https://www.ebay.com/sch/182085/i.html?_from=R40
-Resolving www.ebay.com (www.ebay.com)... 23.35.222.28
-Connecting to www.ebay.com (www.ebay.com)|23.35.222.28|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: ‘index.html’
-
-index.html              [<=>                 ]       0  --.-KB/s               index.html              [ <=>                ] 438.00K  --.-KB/s    in 0.1s    
-
-2018-12-02 05:50:20 (3.88 MB/s) - ‘index.html’ saved [448511]
-

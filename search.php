@@ -16,10 +16,10 @@
 		var dat = $("#search").serialize();
 		$.ajax({
 			type: 'GET',
-			url: 'newEggParse.php',
+			url: 'danawa_.php',
 			data: dat,
 			success : function(data){		
-				$('.site_view').append(data);
+				$('.site_view').html(data);
 			}
 		})
 	}

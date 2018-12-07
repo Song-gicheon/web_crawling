@@ -13,9 +13,21 @@
 	<link rel="stylesheet" href="css/item.css?ver">
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
+	
+	var page = 1;
 	function search_shop(){
+		page = 1;
 		search_newegg();
 		search_danawa();
+	}
+	function plus_newegg(){
+		page = page+1;
+		search_newegg();
+		$('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+	}
+	function minus_newegg(){
+		page = page-1;
+		search_newegg();
 	}
 	function search_danawa(){
 		var dat = $("#search").serialize();
@@ -33,11 +45,11 @@
 		var dat = $("#search").serialize();
                 $.ajax({
                         type: 'GET',
-                        url: 'newEggParse.php',
+                        url: 'newEggParse.php'+'?page='+page,
                         data: dat,
-                        success : function(data){               
+			success : function(data){
                                 $('#newegg_view').html(data);
-                        }
+			}
                 })
         }	
 </script>
@@ -100,6 +112,8 @@
 
 			</ul>
 			<div class="page">
+			<button type="button" class="page_btn" onclick="minus_newegg();">이전</button>
+			<button type="button" class="page_btn" onclick="plus_newegg();">다음</button>
 			</div>
                 </div>
                 <div class="shop_view">

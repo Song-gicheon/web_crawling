@@ -2,10 +2,10 @@
     
     $arr_data = array();
     $item= $_GET['item'];
+    $page= $_GET['page'];
     $item = str_replace(" ","+",$item);
     
-	$item = 'ssd';
-    $url = 'https://www.newegg.com/global/kr-en/Product/ProductList.aspx?Submit=ENE&Description='.$item.'&Order=PRICE';
+    $url = 'https://www.newegg.com/global/kr-en/Product/ProductList.aspx?Submit=ENE&Description='.$item.'&Order=PRICE&Page='.$page;
     $content = file_get_contents($url);
     
        $regex_item_tag = '/href="([^"]*)"/i';

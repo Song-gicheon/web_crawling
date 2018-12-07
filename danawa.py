@@ -31,11 +31,14 @@ for prod_item in prod_items:
     product = prod_img.get_attribute('alt').encode('utf-8').strip()
     print(prod_img_link)
     print(prod_path)
-    print(product);
+    print("<span>"+product+"</span>");
 
     for prices in prod_price:
         price = prices.get_attribute('innerHTML').encode('ascii', 'ignore')
         print(price)
+
+page = driver.find_element_by_css_selector('.search_paging_nav')
+print(page.text.encode('utf-8').strip())
 
 driver.quit()
 

@@ -15,7 +15,7 @@
   float: left;
 }
 .site_logo{
-  width: 95%;
+  width: 93%;
   height: 110px;
   border-bottom: 1px solid #d3d3d3;
   margin: 0 auto;
@@ -26,13 +26,14 @@
   max-height: 90%;
 }
 .item_list{
+  overflow: hidden;
   list-style: none;
   margin: 0 auto;
   width: 100%;
 }
 
 .prod_item{
-    width: 100%;
+    width: 95%;
     height: 480px;
     padding: 5px;
     margin: 12px auto;

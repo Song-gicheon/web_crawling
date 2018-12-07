@@ -14,6 +14,10 @@
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	function search_shop(){
+		search_newegg();
+		search_danawa();
+	}
+	function search_danawa(){
 		var dat = $("#search").serialize();
 		$.ajax({
 			type: 'GET',
@@ -25,9 +29,19 @@
 		})
 	}
 
-	
+	function search_newegg(){
+		var dat = $("#search").serialize();
+                $.ajax({
+                        type: 'GET',
+                        url: 'newEggParse.php',
+                        data: dat,
+                        success : function(data){               
+                                $('#newegg_view').html(data);
+                        }
+                })
+        }	
 </script>
-<
+
 	<title>MainPage</title>
 </head>
 <body>
@@ -81,7 +95,7 @@
 		<div class="shop_view">
                         <div class="site_logo">
                                 <a href="https://www.newegg.com">
-                        <img src="img/newegg.png" class="logo_img"></img></a></div>
+                        	<img src="img/newegg.png" class="logo_img"></img></a></div>
                         <ul class="item_list" id="newegg_view">
 
 			</ul>

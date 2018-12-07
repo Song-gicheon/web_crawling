@@ -1,6 +1,7 @@
 .site_view{
   width: 100%;
-  min-width: 700px;
+  min-width: 750px;
+  border-top: 1px solid #d3d3d3;
 }
 .shop_view{
   position: relative;
@@ -11,7 +12,10 @@
   float: left;
 }
 .site_logo{
-  height: 80px;
+  width: 95%;
+  height: 110px;
+  border-bottom: 1px solid #d3d3d3;
+  margin: 0 auto;
 }
 .logo_img{
   max-width: 100%;
@@ -27,17 +31,29 @@
 
 .prod_item{
     width: 100%;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-top: 1px solid #d3d3d3;
+    height: 480px;
+    padding: 5px;
+    margin-top: 10px;
+    border-bottom: 1px solid #d3d3d3;
     font-size: 15px;
 }
 .prod_item:hover{
-  box-shadow: 1px 1px 20px #d3d3d3;
+  box-shadow: 1px 1px 30px #d3d3d3;
 }
-
+.item_img{
+  width: 90%;
+  margin: 0 auto;
+}
 .item_title{
   color:black;
-  font-size: 21px;
+  font-size: 20px;
   font-weight: bold;
+  height: 100px;
+}
+
+.item_price{
+  margin-top: 15px;
+  margin-left: 10px;
+  color: black;
+  font-size: 25px;
 }

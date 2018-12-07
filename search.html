@@ -49,6 +49,9 @@
 <main class="cd-main-content sub-nav">
 	<!-- 여기에 본문 들어감. ajax 사용해서 json 값으로 받아옵니다. -->
 
+	<div class="search_text"></div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
+	<div id="exchang_data"> </div>	<!-- 여기는 환율 정보 받아오는 부분. -->
+
 	<div class="site_view">
 		<div class="shop_view">
 			<div class="site_logo">
@@ -59,7 +62,7 @@
 					<li class="prod_item">
 						<div class="item_block">
 							<div class="item_img">
-								imgbox
+								<img src="img/testimg.jpg" width="100%" height="auto"></img>
 							</div>
 							<div class="item_title">
 								item 1.
@@ -74,7 +77,7 @@
 					<li class="prod_item">
 						<div class="item_block">
 							<div class="item_img">
-								imgbox2
+								<img src="img/testimg.jpg" width="100%" height="auto"></img>
 							</div>
 							<div class="item_title">
 								item 12.
@@ -93,34 +96,42 @@
 			<div class="site_logo">
 				<a href="https://www.newegg.com">
 			<img src="img/newegg.png" class="logo_img"></img></a></div>
-			<ul class="item_list">
+			<ul class="item_list" id="newegg_view">
+				<!--
+				데이터를 줄 때 이 형식으로 가공해서 줘야한다.
+				넘어오는 데이터는 '이미지 링크, 이동경로, 상품명, 가격'
+				php에서 크롤링한 데이터를 미리 가공하고 반환한다.
+
+			 -->
 				<a href="##">
 					<li class="prod_item">
 						<div class="item_block">
 							<div class="item_img">
-								imgbox
+								<img src="img/testimg.jpg" width="100%" height="auto"></img>
 							</div>
 							<div class="item_title">
-								item 1.
+								Samsung Evo 850 ssd 500gb Internal Solid State Drive
 							</div>
 							<div class="item_price">
-								500원
+								100,600
 							</div>
 						</div>
 					</li>
 				</a>
+				<!-- 여기까지가 ajax 로 들어오는 정보량. -->
+
 			</ul>
 		</div>
 		<div class="shop_view">
 			<div class="site_logo">
 				<a href="https://www.ebay.com">
 				<img src="img/Ebay.png" class="logo_img"></img></a></div>
-			<ul class="item_list">
+			<ul class="item_list" id="ebay_view">
 				<a href="##">
 					<li class="prod_item">
 						<div class="item_block">
 							<div class="item_img">
-								imgbox2
+								<img src="img/testimg.jpg" width="100%" height="auto"></img>
 							</div>
 							<div class="item_title">
 								item 12.
@@ -137,12 +148,12 @@
 			<div class="site_logo">
 				<a href="https://www.aliexpress.com">
 			<img src="img/Aliexpress.png" class="logo_img"></img></a></div>
-			<ul class="item_list">
+			<ul class="item_list" id="ali_view">
 				<a href="##">
 					<li class="prod_item">
 						<div class="item_block">
 							<div class="item_img">
-								imgbox2
+								<img src="img/testimg.jpg" width="100%" height="auto"></img>
 							</div>
 							<div class="item_title">
 								item 12.

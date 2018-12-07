@@ -15,6 +15,7 @@ body {
   font-size: 1.6rem;
   font-family: "Hind", sans-serif;
   color: #25283D;
+  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

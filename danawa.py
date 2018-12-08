@@ -15,7 +15,8 @@ driver = webdriver.Chrome('/home/song/Downloads/chromedriver', chrome_options=op
 driver.implicitly_wait(2)
 
 item = sys.argv[1]
-it = "http://search.danawa.com/dsearch.php?k1="+item
+page = sys.argv[2]
+it = "http://search.danawa.com/dsearch.php?tab=goods&query="+item+"&page="+page
 driver.get(it)
 
 prod_list = driver.find_element_by_id('productListArea')
@@ -36,9 +37,6 @@ for prod_item in prod_items:
     for prices in prod_price:
         price = prices.get_attribute('innerHTML').encode('ascii', 'ignore')
         print(price)
-
-page = driver.find_element_by_css_selector('.search_paging_nav')
-print(page.text.encode('utf-8').strip())
 
 driver.quit()
 

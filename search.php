@@ -15,11 +15,30 @@
 <script type="text/javascript">
 	
 	var page = 1;
+	var d_page = 1;
+	var e_page = 1;
+	var a_page = 1;
+
 	function search_shop(){
 		page = 1;
 		search_newegg();
 		search_danawa();
 	}
+
+	function plus_danawa(){
+                d_page = d_page+1;
+                search_danawa();
+                $('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+        }
+        function minus_danawa(){
+		d_page = d_page-1;
+		if (d_page < 1){
+			d_page=1;
+		}
+                search_danawa();
+                $('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+        }
+
 	function plus_newegg(){
 		page = page+1;
 		search_newegg();
@@ -28,12 +47,14 @@
 	function minus_newegg(){
 		page = page-1;
 		search_newegg();
+		$('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
 	}
+
 	function search_danawa(){
 		var dat = $("#search").serialize();
 		$.ajax({
 			type: 'GET',
-			url: 'danawa_.php',
+			url: 'danawa_.php'+'?page='+d_page,
 			data: dat,
 			success : function(data){		
 				$('#danawa_view').html(data);
@@ -101,7 +122,9 @@
                                 <img src="img/danawa.gif" class="logo_img"></img></a></div>
                         <ul class="item_list" id="danawa_view">
                         </ul>
-                        <div class="page">
+			<div class="page">
+                        <a href="javascript:void(0);" class="page_btn" onclick="minus_danawa();">이전</a>
+                        <a href="javascript:void(0);" class="page_btn" onclick="plus_danawa();">다음</a>
                         </div>
                 </div>
 		<div class="shop_view">
@@ -112,8 +135,8 @@
 
 			</ul>
 			<div class="page">
-			<button type="button" class="page_btn" onclick="minus_newegg();">이전</button>
-			<button type="button" class="page_btn" onclick="plus_newegg();">다음</button>
+			<a href="javascript:void(0);" class="page_btn" onclick="minus_newegg();">이전</a>
+			<a href="javascript:void(0);" class="page_btn" onclick="plus_newegg();">다음</a>
 			</div>
                 </div>
                 <div class="shop_view">

@@ -1,8 +1,9 @@
 <?php
 
 	$item = $_GET['item'];
+	$page = $_GET['page'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./danawa.py $item");
+	$handler = shell_exec("./danawa.py $item $page");
 
 	
 	// 여기서 각 정보 구분해서 출력
@@ -35,6 +36,6 @@
 		}
 	}
 	for ($row = 1; $row<$product; $row++){
-		echo '<a href="'.$arr_data[$row]['path'].'" target="_blank"><li class="prod_item"><div class="item_block"><div class="item_img"><img src="'.$arr_data[$row]['img'].'" width="100%" height="auto"></img></div><div class="item_title">'.$arr_data[$row]['prod'].'</div><div class="item_price">'.$arr_data[$row]['price'].'</div></div></li></a>';
+		echo '<a href="'.$arr_data[$row]['path'].'" target="_blank"><li class="prod_item"><div class="item_block"><div class="item_img"><img src="'.$arr_data[$row]['img'].'" width="100%"></img></div><div class="item_title">'.$arr_data[$row]['prod'].'</div><div class="item_price">₩'.$arr_data[$row]['price'].'</div></div></li></a>';
 	}
 ?>

@@ -18,17 +18,30 @@
 	var d_page = 1;
 	var e_page = 1;
 	var a_page = 1;
+	var trans;
 
 	function search_shop(){
+		var text = $('input[name=item]').val();
+		alert(text);
 		page = 1;
-		search_newegg();
-		search_danawa();
+		$.ajax({
+			type: "POST",
+			url: "https://www.googleapis.com/language/translate/v2?q="+text+"&source=ko&target=en&model=nmt&key=AIzaSyCTbSDVNzuBaZd2pmZG1amoOxu0mS7OYF0",
+			datatype: "json",
+			success: function (respon){
+				trans = respon.data.translations[0].translatedText;
+				
+				setTimeout(search_danawa(), 500);
+                                search_newegg();
+				$('.search_text span').html(trans);
+			}
+		})
 	}
 
 	function plus_danawa(){
                 d_page = d_page+1;
                 search_danawa();
-                $('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+                $('html').animate({scrollTop : 0}, 2000); //위로 스크롤.
         }
         function minus_danawa(){
 		d_page = d_page-1;
@@ -36,7 +49,7 @@
 			d_page=1;
 		}
                 search_danawa();
-                $('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+                $('html').animate({scrollTop : 0}, 2000); //위로 스크롤.
         }
 
 	function plus_newegg(){
@@ -51,23 +64,20 @@
 	}
 
 	function search_danawa(){
-		var dat = $("#search").serialize();
+		alert(trans);
 		$.ajax({
 			type: 'GET',
-			url: 'danawa_.php'+'?page='+d_page,
-			data: dat,
-			success : function(data){		
+			url: 'danawa_.php?item='+trans+'&page='+d_page,
+			success : function(data){
 				$('#danawa_view').html(data);
 			}
 		})
 	}
 
 	function search_newegg(){
-		var dat = $("#search").serialize();
                 $.ajax({
                         type: 'GET',
-                        url: 'newEggParse.php'+'?page='+page,
-                        data: dat,
+                        url: 'newEggParse.php'+'?item='+trans+'page='+page,
 			success : function(data){
                                 $('#newegg_view').html(data);
 			}
@@ -112,7 +122,7 @@
 </header> <!-- .cd-auto-hide-header -->
 <main class="cd-main-content sub-nav">
 	<!-- 여기에 본문 들어감. ajax 사용해서 json 값으로 받아옵니다. -->
-      <div class="search_text">search : </div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
+      <div class="search_text">search : <span></span></div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
         <div id="exchang_data"> exchange_dollar :  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
 
         <div class="site_view">

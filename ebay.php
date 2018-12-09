@@ -38,4 +38,5 @@
 	for ($row = 1; $row<$product; $row++){
 		echo '<a href="'.$arr_data[$row]['path'].'" target="_blank"><li class="prod_item"><div class="item_block"><div class="item_img"><img src="'.$arr_data[$row]['img'].'" width="100%"></img></div><div class="item_title">'.$arr_data[$row]['prod'].'</div><div class="item_price">₩'.$arr_data[$row]['price'].'</div></div></li></a>';
 	}
+
 ?>

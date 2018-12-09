@@ -18,7 +18,6 @@ item_price = "<span class=[\"]s-item__price[\"]>.*?</span>"
 item_name = "<h3 class=[\"]s-item__title[\"] role=[\"]text[\"].*?</h3>"
 item_img = "<img[^>].*? src=[\"].*?jpg"
 #print (re.search(item_price, res.text))
-#print (re.search(item_name, res.text))
 tag = "<[^>].*?>"
 im_tag = "<img[^>].*? src=[\"]"
 price = re.findall(item_price, res.text)

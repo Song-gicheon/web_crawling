@@ -16,11 +16,15 @@ res.text
 item_price = "<span class=[\"]s-item__price[\"]>.*?</span>"
 item_name = "<h3 class=[\"]s-item__title[\"] role=[\"]text[\"].*?</h3>"
 item_img = "<img[^>].*? src=[\"].*?jpg"
+item_link = "<div class=[\"]s-item__image[\"]><a href=.*? tabindex"
 #print (re.search(item_price, res.text))
 #print (re.search(item_name, res.text))
 #print (re.search(item_name, res.text))
 tag = "<[^>].*?>"
+
 im_tag = "<img[^>].*? src=[\"]"
+li_tag = "<div class=[\"]s-item__image[\"]><a href=[\"]"
+li2_tag = "[\"] tabindex"
 price = re.findall(item_price, res.text)
 #print(price)
 for i in price:
@@ -40,3 +44,10 @@ img = re.findall(item_img, res.text)
 for k in img:
 	im = re.sub(im_tag, "", k)
 	print(im)
+
+link = re.findall(item_link, res.text)
+#print(link)
+for l in link:
+	li = re.sub(li_tag, "", l)
+	li2 = re.sub(li2_tag, "", li)
+	print(li2)

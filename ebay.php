@@ -3,7 +3,7 @@
 	$item = $_GET['item'];
 	$page = $_GET['page'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./ebay.py $item $page");
+	$handler = shell_exec("./ebay.py ssd 1");
 
 	
 	// 여기서 각 정보 구분해서 출력
@@ -15,22 +15,23 @@
 	foreach($arr_line as $line)
 	{
 		// 이미지 링크
-		if(strpos($line, "img") > 0)
+		if(strpos($line, "ebayimg") > 0)
 		{
 			$product++;
 			$arr_data[$product]['img'] = $line;
 		}
 		// 이동 경로
-		elseif(strpos($line, "prod") > 0)
+		elseif(strpos($line, "ebay.com") > 0)
 		{
 			$arr_data[$product]['path'] = $line;
 		}
 		// 가격
-		elseif(strpos($line, "strong")>0)
+		elseif(strpos($line, "$")>0)
 		{
 			$arr_data[$product]['price'] = $line;
 		}
-		elseif(strpos($line, "span") > 0)
+		//제품명
+		elseif(strpos($line, "ssd") > 0)
 		{
 			$arr_data[$product]['prod'] = $line;
 		}

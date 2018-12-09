@@ -11,7 +11,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 prefs = {'profile.managed_default_content_settings.images':2}
 options.add_experimental_option("prefs", prefs)
-driver = webdriver.Chrome('/home/song/Downloads/chromedriver', chrome_options=options)
+driver = webdriver.Chrome('./chromedriver', chrome_options=options)
 
 driver.implicitly_wait(4)
 

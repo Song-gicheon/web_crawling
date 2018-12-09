@@ -7,9 +7,9 @@ $conn = mysqli_connect("localhost", "root", "hsd", "web");
 #	     }else{
 #			    echo "Success!~~~(성공~~!!)"; 
 #				  }
-#$sql = "select * from exchange;";
-#$result = mysqli_query($conn, $sql);
-#$e = mysqli_fetch_array($result);
+$sql = "select * from exchange;";
+$result = mysqli_query($conn, $sql);
+$e = mysqli_fetch_array($result);
 
 print_r($e['rate']);
 echo "\n";

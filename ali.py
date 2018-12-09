@@ -24,28 +24,41 @@ item_link = "<a id=[\"]limagebox.*? href=[\"].*?[\"]"
 tag = "<[^>].*?>"
 im_tag = "<img[^>].*? src=[\"]"
 li_tag = "<a id=[\"]limagebox.*? href=[\"]"
-price = re.findall(item_price, res.text)
-#print(price)
-for i in price:
-	pri = re.sub(tag, "", i)
-	print(pri)
-
-
-name = re.findall(item_name, res.text)
-#print(name)
-for j in name:
-	na = re.sub(tag, "", j)
-	print(na)
-
+li2_tag = "[\"]"
 
 img = re.findall(item_img, res.text)
-#print (img)
-for k in img:
-	im = re.sub(im_tag, "", k)
-	print(im)
-
+price = re.findall(item_price, res.text)
+name = re.findall(item_name, res.text)
 link = re.findall(item_link, res.text)
+#print (img)
+
+size = len(img)
+for i in range(size):
+	print(re.sub(im_tag, "", img[i]))
+	print(re.sub(li2_tag, "", re.sub(li_tag, "", link[i])))
+	print("<strong>"+re.sub(tag, "", price[i])+"</strong>")
+	print("<span>"+re.sub(tag, "", name[i])+"</span>")
+
+#for k in img:
+#	im = re.sub(im_tag, "", k)
+#	print(im)
+
+#price = re.findall(item_price, res.text)
+#print(price)
+#for i in price:
+#	pri = re.sub(tag, "", i)
+#	print(pri)
+
+
+#name = re.findall(item_name, res.text)
+#print(name)
+#for j in name:
+#	na = re.sub(tag, "", j)
+#	print(na)
+
+#link = re.findall(item_link, res.text)
 #print(link)
-for l in link:
-	li = re.sub(li_tag, "", l)
-	print(li)
+#for l in link:
+#	li = re.sub(li_tag, "", l)
+#	li2 = re.sub(li2_tag, "", li)
+#	print("https:"+li2)

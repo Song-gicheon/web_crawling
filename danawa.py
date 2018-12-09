@@ -12,7 +12,10 @@ options.add_argument('--disable-dev-shm-usage')
 prefs = {'profile.managed_default_content_settings.images':2}
 options.add_experimental_option("prefs", prefs)
 driver = webdriver.Chrome('/home/song/Downloads/chromedriver', chrome_options=options)
-driver.implicitly_wait(2)
+
+driver.implicitly_wait(4)
+
+wait=WebDriverWait(driver, 10)
 
 item = sys.argv[1]
 page = sys.argv[2]

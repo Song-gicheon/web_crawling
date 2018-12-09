@@ -21,21 +21,21 @@
 	var trans;
 
 	function search_shop(){
-		var text = $('input[name=item]').val();
-		alert(text);
 		page = 1;
-		$.ajax({
-			type: "POST",
-			url: "https://www.googleapis.com/language/translate/v2?q="+text+"&source=ko&target=en&model=nmt&key=AIzaSyCTbSDVNzuBaZd2pmZG1amoOxu0mS7OYF0",
-			datatype: "json",
-			success: function (respon){
-				trans = respon.data.translations[0].translatedText;
-				
-				setTimeout(search_danawa(), 500);
-                                search_newegg();
-				$('.search_text span').html(trans);
-			}
-		})
+		var text = $('input[name=item]').val();
+                $.ajax({
+                type: "POST",
+                url: "https://www.googleapis.com/language/translate/v2?q="+text+"&source=ko&target=en&model=nmt&key=AIzaSyCTbSDVNzuBaZd2pmZG1amoOxu0mS7OYF0",
+                datatype: "json",
+                async: false,
+                success: function (respon){
+                        	trans = respon.data.translations[0].translatedText;
+                        	$('.search_text span').html(trans);
+                        }
+                });
+
+		search_danawa();
+		search_newegg();
 	}
 
 	function plus_danawa(){
@@ -64,10 +64,9 @@
 	}
 
 	function search_danawa(){
-		alert(trans);
+		var urls = 'danawa_.php?item='+trans+'&page='+d_page;
 		$.ajax({
-			type: 'GET',
-			url: 'danawa_.php?item='+trans+'&page='+d_page,
+			url: urls,
 			success : function(data){
 				$('#danawa_view').html(data);
 			}

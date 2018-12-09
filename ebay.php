@@ -3,7 +3,7 @@
 	$item = $_GET['item'];
 	$page = $_GET['page'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./ebay.py");
+	$handler = shell_exec("./ebay.py $item $page");
 
 	
 	// 여기서 각 정보 구분해서 출력

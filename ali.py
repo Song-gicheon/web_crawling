@@ -3,11 +3,16 @@
 import requests
 from html.parser import HTMLParser
 import re
+<<<<<<< HEAD
 import sys
 
 item = sys.argv[1]
 page = sys.argv[2]
 url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText="+item+"&page="+page
+=======
+
+url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText=samsung+ssd"
+>>>>>>> 5ccfa38aa3f02a5a67fd0c1d3cadf8d11db8b790
 res = requests.get(url)
 res.status_code
 res.text
@@ -18,6 +23,10 @@ item_name = "<span itemprop=[\"]name[\"].*?</span>"
 item_img = "<img[^>].*? src=[\"].*?jpg"
 item_link = "<a id=[\"]limagebox.*? href=[\"].*?[\"]"
 #print (re.search(item_price, res.text))
+<<<<<<< HEAD
+=======
+#print (re.search(item_name, res.text))
+>>>>>>> 5ccfa38aa3f02a5a67fd0c1d3cadf8d11db8b790
 tag = "<[^>].*?>"
 im_tag = "<img[^>].*? src=[\"]"
 li_tag = "<a id=[\"]limagebox.*? href=[\"]"

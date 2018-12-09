@@ -5,6 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import sys
+import re
+
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
@@ -25,11 +27,11 @@ driver.get(it)
 
 prod_list = driver.find_element_by_id('productListArea')
 prod_items = prod_list.find_elements_by_class_name('prod_main_info')
+price_regex = "<strong>.*?</strong>"
 
 for prod_item in prod_items:
     prod_img = prod_item.find_element_by_tag_name('img')
     prod_name = prod_item.find_element_by_tag_name('a')
-    prod_price = prod_item.find_elements_by_class_name('click_log_product_standard_price_')
     
     prod_img_link = prod_img.get_attribute('data-original')
     prod_path = prod_name.get_attribute('href')
@@ -37,10 +39,15 @@ for prod_item in prod_items:
     print(prod_img_link)
     print(prod_path)
     print("<span>"+product+"</span>");
-
+    prod_price = prod_item.find_elements_by_class_name('price_sect')
     for prices in prod_price:
         price = prices.get_attribute('innerHTML').encode('ascii', 'ignore')
-        print(price)
+	price_ = re.findall(price_regex, price)
+	if not price_:
+		print('<strong>none</strong>')
+	if price_:
+    		print(price_[0])
+        
 
 driver.quit()
 

@@ -19,6 +19,7 @@
 		{
 			$product++;
 			$arr_data[$product]['img'] = $line;
+			$arr_data[$product]['price'] = '';
 		}
 		// 이동 경로
 		elseif(strpos($line, "prod") > 0)
@@ -28,7 +29,7 @@
 		// 가격
 		elseif(strpos($line, "strong")>0)
 		{
-			$arr_data[$product]['price'] = $line;
+			$arr_data[$product]['price'] = $arr_data[$product]['price']."₩".$line."<br>";
 		}
 		elseif(strpos($line, "span") > 0)
 		{
@@ -36,6 +37,6 @@
 		}
 	}
 	for ($row = 1; $row<$product; $row++){
-		echo '<a href="'.$arr_data[$row]['path'].'" target="_blank"><li class="prod_item"><div class="item_block"><div class="item_img"><img src="'.$arr_data[$row]['img'].'" width="100%"></img></div><div class="item_title">'.$arr_data[$row]['prod'].'</div><div class="item_price">₩'.$arr_data[$row]['price'].'</div></div></li></a>';
+		echo '<a href="'.$arr_data[$row]['path'].'" target="_blank"><li class="prod_item"><div class="item_block"><div class="item_img"><img src="'.$arr_data[$row]['img'].'" width="100%"></img></div><div class="item_title">'.$arr_data[$row]['prod'].'</div><div class="item_price">'.$arr_data[$row]['price'].'</div></div></li></a>';
 	}
 ?>

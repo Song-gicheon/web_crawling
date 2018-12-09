@@ -36,6 +36,7 @@
 		search_newegg();
 		search_danawa();
 		search_ebay();
+		search_ali();
 	}
 
 	function plus_danawa(){
@@ -84,15 +85,23 @@
         }
 
 	function search_ebay(){
+		var urls = 'ebay.php?item='+trans+'&page='+page;
 		$.ajax({
-			type : 'GET',
-			url : 'ebay.php?item='+trans+'&page='+page,
+			url : urls,
 			success : function(data){
 				$('#ebay_view').html(data);
 			}
 		})
 	}	
-
+	function search_ali(){
+		var urls = 'ali.php?item='+trans+'&page='+d_page;
+		$.ajax({
+			url : urls,
+			success : function(data){
+				$('#ali_view').html(data);
+			}
+		})
+	}
 </script>
 
 	<title>MainPage</title>

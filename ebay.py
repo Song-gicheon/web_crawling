@@ -22,6 +22,7 @@ item_link = "<div class=[\"]s-item__image[\"]><a href=.*? tabindex"
 #print (re.search(item_name, res.text))
 tag = "<[^>].*?>"
 im_tag = "<img[^>].*? src=[\"]"
+im2_tag = "https://ir.*? data-src=[\"]"
 li_tag = "<div class=[\"]s-item__image[\"]><a href=[\"]"
 li2_tag = "[\"] tabindex"
 
@@ -32,7 +33,10 @@ link = re.findall(item_link, res.text)
 
 size = len(img)
 for i in range(size):
-	print(re.sub(im_tag, "", img[i]))
+	if (img[i].find("gif") > 0):
+		print(re.sub(im2_tag, "", re.sub(im_tag, "", img[i])))	
+	else:
+		print(re.sub(im_tag, "", img[i]))
 	print(re.sub(li2_tag, "", re.sub(li_tag, "", link[i])))
 	print("<strong>"+re.sub(tag, "", price[i])+"</strong>")
 	print("<span>"+re.sub(tag, "", name[i])+"</span>")

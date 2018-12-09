@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import sys
+
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument('--no-sandbox')

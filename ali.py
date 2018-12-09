@@ -18,7 +18,6 @@ item_name = "<span itemprop=[\"]name[\"].*?</span>"
 item_img = "<img[^>].*? src=[\"].*?jpg"
 item_link = "<a id=[\"]limagebox.*? href=[\"].*?[\"]"
 #print (re.search(item_price, res.text))
-#print (re.search(item_name, res.text))
 tag = "<[^>].*?>"
 im_tag = "<img[^>].*? src=[\"]"
 li_tag = "<a id=[\"]limagebox.*? href=[\"]"

@@ -35,6 +35,7 @@
 
 		search_newegg();
 		search_danawa();
+		search_ebay();
 	}
 
 	function plus_danawa(){
@@ -80,7 +81,18 @@
                                 $('#newegg_view').html(data);
 			}
                 })
-        }	
+        }
+
+	function search_ebay(){
+		$.ajax({
+			type : 'GET',
+			url : 'ebay.php?item='+trans+'&page='+page,
+			success : function(data){
+				$('#ebay_view').html(data);
+			}
+		})
+	}	
+
 </script>
 
 	<title>MainPage</title>

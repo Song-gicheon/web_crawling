@@ -81,8 +81,8 @@
 			success : function(data){
                                 $('#newegg_view').html(data);
 			}
-                })
-        }
+        })
+    }
 
 	function search_ebay(){
 		var urls = 'ebay.php?item='+trans+'&page='+page;
@@ -103,7 +103,12 @@
 		})
 	}
 </script>
-
+<?php
+$conn = mysqli_connect("localhost", "root", "hsd", "web");
+$sql = "select * from exchange";
+$result = mysqli_query($conn, $sql);
+$exchange = mysqli_fetch_array($result);
+?>
 	<title>MainPage</title>
 </head>
 <body>
@@ -142,7 +147,7 @@
 <main class="cd-main-content sub-nav">
 	<!-- 여기에 본문 들어감. ajax 사용해서 json 값으로 받아옵니다. -->
       <div class="search_text">search : <span></span></div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
-        <div id="exchang_data"> exchange_dollar :  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
+        <div id="exchang_data"> exchange_dollar : <?php print_r($exchange['rate']); ?>  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
 
         <div class="site_view">
                 <div class="shop_view">

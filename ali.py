@@ -3,8 +3,11 @@
 import requests
 from html.parser import HTMLParser
 import re
+import sys
 
-url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText=samsung+ssd"
+item = sys.argv[1]
+page = sys.argv[2]
+url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText="+item+"&page="+page
 res = requests.get(url)
 res.status_code
 res.text

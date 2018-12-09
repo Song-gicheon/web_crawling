@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -34,8 +33,8 @@
                         }
                 });
 
-		search_danawa();
 		search_newegg();
+		search_danawa();
 	}
 
 	function plus_danawa(){
@@ -76,7 +75,7 @@
 	function search_newegg(){
                 $.ajax({
                         type: 'GET',
-                        url: 'newEggParse.php'+'?item='+trans+'page='+page,
+                        url: 'newEggParse.php?item='+trans+'&page='+page,
 			success : function(data){
                                 $('#newegg_view').html(data);
 			}

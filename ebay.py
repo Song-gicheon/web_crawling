@@ -3,8 +3,12 @@
 import requests
 from html.parser import HTMLParser
 import re
+import sys
 
-url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw=samsung+ssd&_sacat=182085&_sop=15"
+item = sys.argv[1]
+page = sys.argv[2]
+
+url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw="+item+"&_pgn"+page
 res = requests.get(url)
 res.status_code
 res.text

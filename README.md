@@ -15,13 +15,16 @@
  python에서는 selenium 라이브러리를 이용합니다.
 
 ## installation
- **1. pip 를 이용해서 selenium을 설치합니다. **
+ 1. pip 를 이용해서 selenium을 설치합니다. 
  `$ pip install selenium`
   - 만약 pip 이 설치되지 않았다면 `$ apt-get install python-pip` 을 이용해서 설치해줍니다.
- **2. selenium 에서 이용할 크롬 브라우저와 크롬드라이버를 설치합니다.**
-   ###- http://chromedriver.chromium.org/
- **3. danawa.py 파일에서 알맞은 크롬 드라이버 경로를 설정해줍니다.**
- **4. apache - php - mysql 를 설치해서 서버 환경을 구성합니다.**
+  
+ 2. selenium 에서 이용할 크롬 브라우저와 크롬드라이버를 설치합니다.
+ ###- http://chromedriver.chromium.org/
+ 
+ 3. danawa.py 파일에서 알맞은 크롬 드라이버 경로를 설정해줍니다.
+ 
+ 4. apache - php - mysql 를 설치해서 서버 환경을 구성합니다.
  
  
 ## Supported Shopping Web Site

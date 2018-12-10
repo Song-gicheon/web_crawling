@@ -27,7 +27,9 @@
  4. apache - php - mysql 를 설치해서 서버 환경을 구성합니다.
  
    apt install apache2                     //apache설치
+   
    apt install mysql-server mysql-client  //mysql설치
+   
    apt install php php-gd php-mysql      //php 설치, php-mysql 연동
    apt install libapache2-mod-php	       //apache-php 연동 
   

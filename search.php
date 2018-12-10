@@ -153,11 +153,7 @@
 	}
 </script>
 <?php
-<<<<<<< HEAD
 $conn = mysqli_connect("localhost", "root", "hsd", "web");
-=======
-$conn = mysqli_connect("localhost", "it", "1234", "web");
->>>>>>> 67e04cf5d69858263e7b23891ac6aca815bba813
 $sql = "select * from exchange";
 $result = mysqli_query($conn, $sql);
 $exchange = mysqli_fetch_array($result);

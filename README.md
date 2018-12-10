@@ -35,10 +35,13 @@
         apt install libapache2-mod-php	       //apache-php 연동 
   
 ## Exchange Rate Database 
- create database web;	      //web데이터베이스 생성
- use web;	                  //web데이터베이스 사용하기
- create table exchange(rate varchar(20) not null primary key);	//테이블 만들기
- describe exchange;        	//exchange테이블 확인
+      create database web;	      //web데이터베이스 생성
+      
+      use web;	                  //web데이터베이스 사용하기
+      
+      create table exchange(rate varchar(20) not null primary key);	//테이블 만들기
+      
+      describe exchange;        	//exchange테이블 확인
 
 ## Supported Shopping Web Site
  1. Danawa - www.danawa.com

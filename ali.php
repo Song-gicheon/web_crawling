@@ -9,7 +9,11 @@
 	
 	// 여기서 각 정보 구분해서 출력
 	// 전체 handler 에서 종류별로 구분.
+<<<<<<< HEAD
 	$conn = mysqli_connect("localhost", "root", "hsd", "hsd");
+=======
+	$conn = mysqli_connect("localhost", "it", "1234", "web");
+>>>>>>> 67e04cf5d69858263e7b23891ac6aca815bba813
 	$sql = "select * from exchange";
 	$result = mysqli_query($conn, $sql);
 	$exchange = mysqli_fetch_array($result);
@@ -42,7 +46,11 @@
 			$p = $max[0] * $exchange['rate'];
 			//echo $pr."<br>".$p;
 			//echo $pr." - ".$p."<br>"."$".$line;
+<<<<<<< HEAD
 			$arr_data[$product]['price'] = $pr." - ".$p."<br>"."$".$line;
+=======
+			$arr_data[$product]['price'] = "₩ ".(int)$pr." - ".(int)$p."<br>"."$".$line;
+>>>>>>> 67e04cf5d69858263e7b23891ac6aca815bba813
 		}
 		//상품명
 		elseif(strpos($line, "span") > 0)

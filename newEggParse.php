@@ -3,9 +3,10 @@
     $arr_data = array();
     $item= $_GET['item'];
     $page= $_GET['page'];
+    $option= $_GET['Order'];
     $item = str_replace(" ","+",$item);
     
-    $url = 'https://www.newegg.com/global/kr-en/Product/ProductList.aspx?Submit=ENE&Description='.$item.'&Order=PRICE&Page='.$page;
+    $url = 'https://www.newegg.com/global/kr-en/Product/ProductList.aspx?Submit=ENE&Description='.$item.'&Order='.$option.'&Page='.$page;
     $content = file_get_contents($url);
        $regex_item_tag = '/href="([^"]*)"/i';
        $regex_item_string = '/<a\s+.*?>(.*)<\/a>/';

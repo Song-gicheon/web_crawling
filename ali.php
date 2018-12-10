@@ -2,8 +2,9 @@
 
 	$item = $_GET['item'];
 	$page = $_GET['page'];
+	$option = $_GET['SortType'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./ali.py $item $page");
+	$handler = shell_exec("./ali.py $item $page $option");
 	$regex_price = '/[0-9\.]+/';
 	
 	// 여기서 각 정보 구분해서 출력

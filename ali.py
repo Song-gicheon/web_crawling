@@ -7,8 +7,9 @@ import sys
 
 item = sys.argv[1]
 page = sys.argv[2]
+option = sys.argv[3]
 #url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText="+item+"&page="+page
-url = "https://www.aliexpress.com/wholesale?initiative_id=SB_20181209124656&site=glo&SearchText="+item+"&page="+page
+url = "https://www.aliexpress.com/wholesale?initiative_id=SB_20181209124656&site=glo&SearchText="+item+"&page="+page+"&SortType="+option
 res = requests.get(url)
 res.status_code
 res.text

@@ -2,8 +2,9 @@
 
 	$item = $_GET['item'];
 	$page = $_GET['page'];
+	$option = $_GET['_sop'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./ebay.py $item $page");
+	$handler = shell_exec("./ebay.py $item $page $option");
 	$regex_price = '/[0-9\.]+/';
 	
 	$conn = mysqli_connect("localhost", "root", "hsd", "web");

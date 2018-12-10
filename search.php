@@ -12,14 +12,16 @@
 	<link rel="stylesheet" href="css/item.css?ver">
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-	
+
 	var page = 1;
 	var d_page = 1;
 	var e_page = 1;
 	var a_page = 1;
 	var trans;
-
+	var target;
+	
 	function search_shop(){
+		target = $("#selectBox option:selected").val();
 		page = 1;
 		var text = $('input[name=item]').val();
                 $.ajax({
@@ -43,7 +45,8 @@
                 d_page = d_page+1;
                 search_danawa();
                 $('html').animate({scrollTop : 0}, 2000); //위로 스크롤.
-        }
+        	$('#danawa_view').animate({scrollTop : 0}, 2000);
+	}
 	function minus_danawa(){
 		d_page = d_page-1;
 		if (d_page < 1){
@@ -51,17 +54,20 @@
 		}
                 search_danawa();
                 $('html').animate({scrollTop : 0}, 2000); //위로 스크롤.
+		$('#danawa_view').animate({scrollTop : 0}, 2000);
         }
 
 	function plus_newegg(){
 		page = page+1;
 		search_newegg();
 		$('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+		$('#newegg_view').animate({scrollTop : 0}, 500);
 	}
 	function minus_newegg(){
 		page = page-1;
 		search_newegg();
 		$('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+		$('#newegg_view').animate({scrollTop : 0}, 500);
 	}
 	
 	function plus_ebay(){
@@ -73,23 +79,28 @@
 		e_page = e_page-1;
 		if(e_page < 1) e_page=1;
 	    search_ebay();
-   		$('html').animate({scrollTop : 0}, 1000);	   
+   		$('html').animate({scrollTop : 0}, 1000);
 	}
 
 	function plus_ali(){
 		a_page = a_page+1;
 		search_ali();
 		$('html').animate({scrollTop : 0}, 1000);
+		$('#ali_view').animate({scrollTop : 0}, 500);
 	}
 	function minus_ali(){
 		a_page = a_page-1;
 		if(a_page < 1) a_page=1;
 	    search_ali();
+		$('#ali.view').animate({scrollTop : 0},500);	
    		$('html').animate({scrollTop : 0}, 1000);	   
 	}
 
 	function search_danawa(){
-		var urls = 'danawa_.php?item='+trans+'&page='+d_page;
+		var option='';
+		if( target == 'best') option = 'saveDESC';
+		else if( target == 'low') option = 'priceASC';
+		var urls = 'danawa_.php?item='+trans+'&page='+d_page+'&sort='+option;
 		$.ajax({
 			url: urls,
 			success : function(data){
@@ -99,9 +110,12 @@
 	}
 
 	function search_newegg(){
+		var option='';
+		if(target == 'best') {option = 'BESTMATCH';}
+		else if(target == 'low') option = 'PRICE';
                 $.ajax({
                         type: 'GET',
-                        url: 'newEggParse.php?item='+trans+'&page='+page,
+                        url: 'newEggParse.php?item='+trans+'&page='+page+'&Order='+option,
 			success : function(data){
                                 $('#newegg_view').html(data);
 			}
@@ -109,7 +123,11 @@
     }
 
 	function search_ebay(){
-		var urls = 'ebay.php?item='+trans+'&page='+e_page;
+		var option = '';
+		if(target == 'best') option = '12';
+		else if(target == 'low') option = '15';
+                
+		var urls = 'ebay.php?item='+trans+'&page='+e_page+'&_sop='+option;
 		$.ajax({
 			url : urls,
 			success : function(data){
@@ -118,7 +136,9 @@
 		})
 	}	
 	function search_ali(){
-		var urls = 'ali.php?item='+trans+'&page='+a_page;
+		if(target == 'best') option = 'default';
+		else if(target == 'low') option = 'price_asc';
+                var urls = 'ali.php?item='+trans+'&page='+a_page+'&SortType='+option;
 		$.ajax({
 			url : urls,
 			success : function(data){
@@ -177,6 +197,13 @@ $exchange = mysqli_fetch_array($result);
 	<!-- 여기에 본문 들어감. ajax 사용해서 json 값으로 받아옵니다. -->
       <div class="search_text">search : <span></span></div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
         <div id="exchang_data"> exchange_dollar : <?php print_r($exchange['rate']); ?>  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
+
+	<div id="select_box">
+		<select name="selectBox" id="selectBox">
+			<option value="best">Best_match</option>
+			<option value="low">low_price</option>
+		</select>
+	</div>
 
         <div class="site_view">
                 <div class="shop_view">

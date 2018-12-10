@@ -2,8 +2,9 @@
 
 	$item = $_GET['item'];
 	$page = $_GET['page'];
+	$option = $_GET['sort'];
 	$item = str_replace(" ", "+", $item);
-	$handler = shell_exec("./danawa.py $item $page");
+	$handler = shell_exec("./danawa.py $item $page $option");
 
 	
 	// 여기서 각 정보 구분해서 출력

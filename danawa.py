@@ -22,7 +22,8 @@ wait=WebDriverWait(driver, 10)
 
 item = sys.argv[1]
 page = sys.argv[2]
-it = "http://search.danawa.com/dsearch.php?tab=goods&query="+item+"&page="+page
+option = sys.argv[3]
+it = "http://search.danawa.com/dsearch.php?tab=goods&query="+item+"&page="+page+"&sort="+option
 driver.get(it)
 
 prod_list = driver.find_element_by_id('productListArea')

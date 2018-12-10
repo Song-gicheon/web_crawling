@@ -7,9 +7,9 @@ import sys
 
 item = sys.argv[1]
 page = sys.argv[2]
-
+option = sys.argv[3]
 #url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw="+item+"&_pgn"+page
-url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw="+item+"&_sacat=0&LH_TitleDesc=0&LH_TitleDesc=0&_ipg=25&_pgn="+page
+url = "https://www.ebay.com/sch/i.html?_from=R40&_nkw="+item+"&_sacat=0&LH_TitleDesc=0&LH_TitleDesc=0&_ipg=25&_pgn="+page+"&_sop="+option
 res = requests.get(url)
 res.status_code
 res.text
@@ -35,7 +35,6 @@ link = re.findall(item_link, res.text)
 print(price)
 size = len(img)
 for i in range(size):
-	print('test1')
 	if (img[i].find("gif") > 0):
 		print(re.sub(im2_tag, "", re.sub(im_tag, "", img[i])))	
 	else:
@@ -47,8 +46,6 @@ for i in range(size):
 		print("<strong>"+re.sub("\$", "", re.sub(tag, "", price[i]))+"</strong>")
 	na = re.sub(tag, "", name[i])
 	print("<span>"+re.sub(na_tag, "", na)+"</span>")
-	print('test')
-print('test2')
 #print (img)
 #for k in img:
 #	im = re.sub(im_tag, "", k)

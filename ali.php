@@ -4,10 +4,14 @@
 	$page = $_GET['page'];
 	$item = str_replace(" ", "+", $item);
 	$handler = shell_exec("./ali.py $item $page");
-
+	$regex_price = '/[0-9\.]+/';
 	
 	// 여기서 각 정보 구분해서 출력
 	// 전체 handler 에서 종류별로 구분.
+	$conn = mysqli_connect("localhost", "root", "hsd", "hsd");
+	$sql = "select * from exchange";
+	$result = mysqli_query($conn, $sql);
+	$exchange = mysqli_fetch_array($result);
 
 	$product = 0;
 	$arr_data = array();
@@ -27,8 +31,17 @@
 		}
 		// 가격
 		elseif(strpos($line, "strong") > 0)
-		{
-			$arr_data[$product]['price'] = $line;
+		{	
+			$pri = preg_split("[\-\s]", $line, -1);
+			preg_match($regex_price, $pri[0], $min);
+			preg_match($regex_price, $pri[1], $max);
+			//print_r($min);
+			//print_r($max);
+			$pr = $min[0] * $exchange['rate'];
+			$p = $max[0] * $exchange['rate'];
+			//echo $pr."<br>".$p;
+			//echo $pr." - ".$p."<br>"."$".$line;
+			$arr_data[$product]['price'] = $pr." - ".$p."<br>"."$".$line;
 		}
 		//상품명
 		elseif(strpos($line, "span") > 0)

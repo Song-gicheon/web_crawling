@@ -37,7 +37,7 @@ size = len(img)
 for i in range(size):
 	print(re.sub(im_tag, "", img[i]))
 	print(re.sub(li2_tag, "", re.sub(li_tag, "", link[i])))
-	print("<strong>"+re.sub(tag, "", price[i])+"</strong>")
+	print("<strong>"+re.sub("US \$", "", re.sub(tag, "", price[i])+"</strong>"))
 	print("<span>"+re.sub(tag, "", name[i])+"</span>")
 
 #for k in img:

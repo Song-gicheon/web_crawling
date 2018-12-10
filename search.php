@@ -44,7 +44,7 @@
                 search_danawa();
                 $('html').animate({scrollTop : 0}, 2000); //위로 스크롤.
         }
-        function minus_danawa(){
+	function minus_danawa(){
 		d_page = d_page-1;
 		if (d_page < 1){
 			d_page=1;
@@ -62,6 +62,30 @@
 		page = page-1;
 		search_newegg();
 		$('html').animate({scrollTop : 0}, 1000); //위로 스크롤.
+	}
+	
+	function plus_ebay(){
+		e_page = e_page+1;
+		search_ebay();
+		$('html').animate({scrollTop : 0}, 1000);
+	}
+	function minus_ebay(){
+		e_page = e_page-1;
+		if(e_page < 1) e_page=1;
+	    search_ebay();
+   		$('html').animate({scrollTop : 0}, 1000);	   
+	}
+
+	function plus_ali(){
+		a_page = a_page+1;
+		search_ali();
+		$('html').animate({scrollTop : 0}, 1000);
+	}
+	function minus_ali(){
+		a_page = a_page-1;
+		if(a_page < 1) a_page=1;
+	    search_ali();
+   		$('html').animate({scrollTop : 0}, 1000);	   
 	}
 
 	function search_danawa(){
@@ -85,7 +109,7 @@
     }
 
 	function search_ebay(){
-		var urls = 'ebay.php?item='+trans+'&page='+page;
+		var urls = 'ebay.php?item='+trans+'&page='+e_page;
 		$.ajax({
 			url : urls,
 			success : function(data){
@@ -94,13 +118,18 @@
 		})
 	}	
 	function search_ali(){
-		var urls = 'ali.php?item='+trans+'&page='+d_page;
+		var urls = 'ali.php?item='+trans+'&page='+a_page;
 		$.ajax({
 			url : urls,
 			success : function(data){
 				$('#ali_view').html(data);
 			}
 		})
+	}
+	function keydown(){
+		if(event.keyCode == 13){
+			search_shop();
+		}
 	}
 </script>
 <?php
@@ -137,8 +166,8 @@ $exchange = mysqli_fetch_array($result);
 
 	<nav class="cd-secondary-nav">
 		<div class="d3">
-		<form id="search">
-		  <input name="item" type="text" placeholder="검색어 입력">
+		<form id="search" action="javascript:void(0);">
+		  <input name="item" type="text" placeholder="검색어 입력" onKeyDown="keydown();"/>
 		  <button type="button" onclick='search_shop();'></button>
 		</form>
 		</div>
@@ -152,44 +181,47 @@ $exchange = mysqli_fetch_array($result);
         <div class="site_view">
                 <div class="shop_view">
                         <div class="site_logo">
-                                <a href="http://www.danawa.com">
-                                <img src="img/danawa.gif" class="logo_img"></img></a></div>
+                            <a href="http://www.danawa.com">
+                            <img src="img/danawa.gif" class="logo_img"></img></a></div>
                         <ul class="item_list" id="danawa_view">
                         </ul>
-			<div class="page">
+					<div class="page">
                         <a href="javascript:void(0);" class="page_btn" onclick="minus_danawa();">이전</a>
                         <a href="javascript:void(0);" class="page_btn" onclick="plus_danawa();">다음</a>
-                        </div>
+                	</div>
                 </div>
-		<div class="shop_view">
+				<div class="shop_view">
                         <div class="site_logo">
-                                <a href="https://www.newegg.com">
+                            <a href="https://www.newegg.com">
                         	<img src="img/newegg.png" class="logo_img"></img></a></div>
                         <ul class="item_list" id="newegg_view">
-
-			</ul>
-			<div class="page">
-			<a href="javascript:void(0);" class="page_btn" onclick="minus_newegg();">이전</a>
-			<a href="javascript:void(0);" class="page_btn" onclick="plus_newegg();">다음</a>
-			</div>
+						</ul>
+					<div class="page">
+						<a href="javascript:void(0);" class="page_btn" onclick="minus_newegg();">이전</a>
+						<a href="javascript:void(0);" class="page_btn" onclick="plus_newegg();">다음</a>
+					</div>
                 </div>
                 <div class="shop_view">
                         <div class="site_logo">
-                                <a href="https://www.ebay.com">
-				<img src="img/Ebay.png" class="logo_img"></img></a></div>
+                            <a href="https://www.ebay.com">
+							<img src="img/Ebay.png" class="logo_img"></img></a></div>
                         <ul class="item_list" id="ebay_view">
-			</ul>
-			<div class="page">
-			</div>
+						</ul>
+					<div class="page">
+						<a href="javascript:void(0);" class="page_btn" onclick="minus_ebay();">이전</a>
+						<a href="javascript:void(0);" class="page_btn" onclick="plus_ebay();">다음</a>
+					</div>
                 </div>
                 <div class="shop_view">
-                        <div class="site_logo">
-                                <a href="https://www.aliexpress.com">
-                        <img src="img/Aliexpress.png" class="logo_img"></img></a></div>
-                        <ul class="item_list" id="ali_view">
-			</ul>
-			<div class="page">
-			</div>
+                 	    <div class="site_logo">
+                            <a href="https://www.aliexpress.com">
+                     	    <img src="img/Aliexpress.png" class="logo_img"></img></a></div>
+               			<ul class="item_list" id="ali_view">
+						</ul>
+					<div class="page">
+						<a href="javascript:void(0);" class="page_btn" onclick="minus_ali();">이전</a>
+						<a href="javascript:void(0);" class="page_btn" onclick="plus_ali();">다음</a>	
+					</div>
                 </div>
         </div>	
 </main> <!-- .cd-main-content -->

@@ -31,10 +31,12 @@
   margin: 0 auto;
   width: 100%;
 }
-
+img{
+  max-height:100%;
+}
 .prod_item{
     width: 95%;
-    height: 480px;
+    height: 350px;
     padding: 5px;
     margin: 12px auto;
     border-bottom: 1px solid #d3d3d3;
@@ -47,22 +49,30 @@
 }
 .item_img{
   width: 90%;
+  min-height:106px;
+  max-height:180px;
+  overflow: hidden;
   padding: 10px;
   margin: 0 auto;
 }
 .item_title{
-  margin: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  padding-bottom:20px;
   color:black;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
-  height: 100px;
+  max-height: 100px;
+  overflow:hidden;
 }
 
 .item_price{
-  margin-top: 15px;
+  height:50px;
+  margin-top: 5px;
   margin-left: 10px;
   color: black;
-  font-size: 25px;
+  font-size: 18px;
+  overflow: auto;
 }
 
 .page{

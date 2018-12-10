@@ -15,23 +15,23 @@
 	foreach($arr_line as $line)
 	{
 		// 이미지 링크
-		if(strpos($line, "jpg") == true)
+		if(strpos($line, "jpg") > 0)
 		{
 			$product++;
 			$arr_data[$product]['img'] = $line;
 		}
 		// 이동 경로
-		elseif(strpos($line, "item") == true)
+		elseif(strpos($line, "item") > 0)
 		{
 			$arr_data[$product]['path'] = $line;
 		}
 		// 가격
-		elseif(strpos($line, "strong") == true)
+		elseif(strpos($line, "strong") > 0)
 		{
 			$arr_data[$product]['price'] = $line;
 		}
 		//상품명
-		elseif(strpos($line, "span") == true)
+		elseif(strpos($line, "span") > 0)
 		{
 			$arr_data[$product]['prod'] = $line;
 		}

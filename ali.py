@@ -7,8 +7,8 @@ import sys
 
 item = sys.argv[1]
 page = sys.argv[2]
-url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText="+item+"&page="+page
-
+#url = "https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181209000127&SearchText="+item+"&page="+page
+url = "https://www.aliexpress.com/wholesale?initiative_id=SB_20181209124656&site=glo&SearchText="+item+"&page="+page
 res = requests.get(url)
 res.status_code
 res.text
@@ -16,17 +16,18 @@ res.text
 item_price = "<span class=[\"]value[\"] itemprop=[\"]price[\"]>.*?</span>"
 #item_name = "<a class=[\"]history-tiem prodect [\"] href=.*? title=.*? target=.*?>"
 item_name = "<span itemprop=[\"]name[\"].*?</span>"
-item_img = "<img[^>].*? src=[\"].*?jpg"
+item_img = "<img itemprop=[^>].*?src=[\"].*?jpg"
 item_link = "<a id=[\"]limagebox.*? href=[\"].*?[\"]"
 #print (re.search(item_price, res.text))
 #print (re.search(item_name, res.text))
 #print (re.search(item_name, res.text))
 tag = "<[^>].*?>"
-im_tag = "<img[^>].*? src=[\"]"
+im_tag = "<img[^>].*?src=[\"]"
 li_tag = "<a id=[\"]limagebox.*? href=[\"]"
 li2_tag = "[\"]"
 
 img = re.findall(item_img, res.text)
+#print(img)
 price = re.findall(item_price, res.text)
 name = re.findall(item_name, res.text)
 link = re.findall(item_link, res.text)

@@ -35,13 +35,18 @@
         apt install libapache2-mod-php	       //apache-php 연동 
   
 ## Exchange Rate Database 
-      create database web;	      //web데이터베이스 생성
-      
-      use web;	                  //web데이터베이스 사용하기
-      
-      create table exchange(rate varchar(20) not null primary key);	//테이블 만들기
-      
-      describe exchange;        	//exchange테이블 확인
+        create database web;	      //web데이터베이스 생성
+
+        use web;	                  //web데이터베이스 사용하기
+
+        create table exchange(rate varchar(20) not null primary key);	//테이블 만들기
+
+        describe exchange;        	//exchange테이블 확인
+
+    crontab을 이용하여 매일 한 번씩 네이버 환율정보 기반으로 업데이트 시켜준다.
+         crontab -e
+         0 9 * * * php /your/file/path/exchange.php
+
 
 ## Supported Shopping Web Site
  1. Danawa - www.danawa.com

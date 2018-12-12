@@ -196,11 +196,8 @@ $exchange = mysqli_fetch_array($result);
 <main class="cd-main-content sub-nav">
 	<!-- 여기에 본문 들어감. ajax 사용해서 json 값으로 받아옵니다. -->
       <div class="search_text">search : <span></span></div> <!-- 여기는 검색어 출력해주는 부분 (번역 후 텍스트)-->
-<<<<<<< HEAD
-        <div id="exchang_data"> exchange_dollar : <?php print_r($exchange['rate']); ?>  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
-=======
+	<HEAD>
         <div id="exchang_data"> exchange_dollar : $<?php print_r($exchange['rate']); ?>  </div>       <!-- 여기는 환율 정보 받아오는 부분. -->
->>>>>>> 67e04cf5d69858263e7b23891ac6aca815bba813
 
 	<div id="select_box">
 		<select name="selectBox" id="selectBox">
